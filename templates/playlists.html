@@ -1,0 +1,29 @@
+<html>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+<body>
+
+<h1>Playlist</h1>
+
+<a href="{{url_for('newPlaylist')}}" > <h3> Create a New Playlist </h3> </a>
+
+{% for playlist in playlists %}
+
+<div>
+
+<a href = "{{url_for('newPlaylistSong',playlist_id = playlist.id)}}"> <p>{{playlist.name}}</p></a>
+
+<p><a href = "{{url_for('editPlaylist',playlist_id = playlist.id)}}">Edit Playlist</a></p>
+
+<p> <a href = "{{url_for('deletePlaylist',playlist_id = playlist.id)}}">Delete Playlist</a> </p>
+
+
+</div>
+
+
+{% endfor %}
+</body>
+{% endblock %}
+</html>
